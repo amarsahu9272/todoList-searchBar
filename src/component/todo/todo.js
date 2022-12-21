@@ -15,9 +15,9 @@ function TodoList() {
     let [list, setlist] = useState(todoList)
     let [value, setValue] = useState('')
 
-    function Increment() {
-        setCount(count++);
-    }
+    // function Increment() {
+    //     setCount(count++);
+    // }
 
     function addList() {
         const newTodo = {
@@ -27,6 +27,7 @@ function TodoList() {
         }
         setlist([...list, newTodo])
         console.log(list)
+        setCount(count=count+1)
         setValue('')
     }
 
@@ -46,6 +47,7 @@ function TodoList() {
         const indexOfClickedTodo = list.findIndex(Nm => Nm.name === item.name)
         list.splice(indexOfClickedTodo, indexOfClickedTodo);
         setlist([...list])
+        setCount(count=count-1)
     }
 
     return (
@@ -61,7 +63,7 @@ function TodoList() {
                         </div>))}
                     </ul>
                     <input onChange={captureUserInput} value={value} placeholder="Add new task"></input>
-                    <button onClick={Increment} onClick={addList} value={value}>Add-Item</button>
+                    <button onClick={addList} value={value}>Add-Item</button>
                 </div>
             </div>
         </Fragment>
