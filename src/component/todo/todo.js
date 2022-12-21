@@ -1,7 +1,8 @@
-import { getValue } from "@testing-library/user-event/dist/utils";
 import { useState } from "react";
 import { Fragment } from "react";
 import './todo.css'
+
+import SearchBar from "../others/searchBar";
 
 
 
@@ -14,10 +15,6 @@ function TodoList() {
     let [count, setCount] = useState(0)
     let [list, setlist] = useState(todoList)
     let [value, setValue] = useState('')
-
-    // function Increment() {
-    //     setCount(count++);
-    // }
 
     function addList() {
         const newTodo = {
@@ -45,15 +42,18 @@ function TodoList() {
 
     function deleteTodo(item) {
         const indexOfClickedTodo = list.findIndex(Nm => Nm.name === item.name)
-        list.splice(indexOfClickedTodo, indexOfClickedTodo);
+        list.splice(indexOfClickedTodo, 1);
         setlist([...list])
         setCount(count=count-1)
     }
 
     return (
         <Fragment>
+        {/* <SearchBar placeholder="Enter a Todo List.." data = {list}/> */}
             <div className="outerDiv" >
+            <SearchBar placeholder="Enter a Todo List.." data = {list}/>
                 <div className="innerDiv">
+                
                     <h1 style={{ color: 'white' }} >Pending tasks({count})</h1>
                     <ul>
                         {list.map((item) => (<div style={{ display: 'flex', justifyContent: 'space-around' }}>
@@ -71,3 +71,10 @@ function TodoList() {
 }
 
 export default TodoList
+
+
+
+
+
+
+
